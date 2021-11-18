@@ -6,8 +6,8 @@ sudo apt install tmux mtr npm dnsutils htop zsh git vim curl wget unzip gnupg so
 
 wget https://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
-echo "deb https://nginx.org/packages/mainline/debian/ buster nginx" >> /etc/apt/sources.list
-echo "deb-src https://nginx.org/packages/mainline/debian/ buster nginx" >> /etc/apt/sources.list
+echo "deb https://nginx.org/packages/mainline/debian/ bullseye nginx" >> /etc/apt/sources.list
+echo "deb-src https://nginx.org/packages/mainline/debian/ bullseye nginx" >> /etc/apt/sources.list
 sudo apt update
 sudo apt install nginx -y
 
