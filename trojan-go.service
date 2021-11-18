@@ -1,0 +1,11 @@
+[Unit]
+Description=trojan-go
+Wants=network.target nginx.service
+After=network.target nginx.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/trojan-go/trojan-go -config /usr/local/etc/trojan-go/config.json
+
+[Install]
+WantedBy=multi-user.target
