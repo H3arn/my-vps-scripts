@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install htop zsh git vim curl wget unzip gnupg socat -y
+sudo apt install dnsutils htop zsh git vim curl wget unzip gnupg socat -y
 
 wget https://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
