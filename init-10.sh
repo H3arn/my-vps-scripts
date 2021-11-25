@@ -18,6 +18,7 @@ unzip -o trojan-go-linux-amd64.zip -d /usr/local/bin/trojan-go
 mkdir -p /usr/local/etc/trojan-go
 curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
 
+curl https://get.acme.sh | sh
 
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s /usr/bin/zsh 
