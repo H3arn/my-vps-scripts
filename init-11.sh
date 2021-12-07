@@ -1,11 +1,12 @@
 #!/bin/bash
 
+apt install sudo
+
 sudo apt update
 sudo apt upgrade -y
-sudo apt install sudo tmux mtr npm dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 -y
+sudo apt install tmux mtr npm dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 -y
 
 npm -i nali-cli -g
-
 
 wget https://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
