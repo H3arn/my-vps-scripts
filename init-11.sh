@@ -6,6 +6,7 @@ sudo apt install sudo tmux mtr npm dnsutils htop rsync zsh git vim curl wget unz
 
 npm -i nali-cli -g
 
+
 wget https://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
 echo "deb https://nginx.org/packages/mainline/debian/ bullseye nginx" >> /etc/apt/sources.list
