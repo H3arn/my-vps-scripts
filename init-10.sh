@@ -6,6 +6,7 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt install tmux mtr npm dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 -y
 
+
 npm -i nali-cli -g
 
 # install nginx mainline
