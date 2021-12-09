@@ -8,21 +8,18 @@ unzip -o trojan-go-linux-amd64.zip -d /usr/local/bin/trojan-go
 mkdir -p /usr/local/etc/trojan-go
 curl -L https://raw.githubusercontent.com/H3arn/cmy-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
 
-# install paru
-sudo vim /etc/pacman.conf
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru
-makepkg -si
-
 # add locale and pacman color
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+vim /etc/pacman.conf
+
+# add archcn repo
 cat << EOT >> /etc/pacman.conf
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/\$arch
 EOT
-cat /etc/pacman.conf | grep Color
+
+#echo "Color" >> /etc/pacman.conf  
 
 # network optimization
 touch /etc/sysctl.d/99-sysctl.conf
@@ -46,6 +43,12 @@ EOT
 useradd -m -G "wheel" "archie"
 visudo
 sudo su archie
+
+# install paru
+pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru-bin.git
+cd paru
+makepkg -si
 
 # get acme.sh
 curl https://get.acme.sh | sh
