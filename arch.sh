@@ -58,3 +58,4 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
   ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 
 curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
+
