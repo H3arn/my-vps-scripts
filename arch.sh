@@ -8,24 +8,6 @@ unzip -o trojan-go-linux-amd64.zip -d /usr/local/bin/trojan-go
 mkdir -p /usr/local/etc/trojan-go
 curl -L https://raw.githubusercontent.com/H3arn/cmy-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
 
-
-# set up new user archie
-useradd -m -G "wheel" "archie"
-visudo
-sudo su archie
-
-# get acme.sh
-curl https://get.acme.sh | sh
-
-# install oh-my-zsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s /usr/bin/zsh 
-
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
-
-curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
-
 # install paru
 sudo vim /etc/pacman.conf
 sudo pacman -S --needed base-devel
@@ -33,8 +15,7 @@ git clone https://aur.archlinux.org/paru-bin.git
 cd paru
 makepkg -si
 
-# 
-sudo su
+# add locale and pacman color
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 cat << EOT >> /etc/pacman.conf
@@ -60,3 +41,20 @@ net.ipv4.tcp_congestion_control = bbr
 net.core.default_qdisc = cake
 net.ipv4.tcp_syncookies = 1 
 EOT
+
+# set up new user archie
+useradd -m -G "wheel" "archie"
+visudo
+sudo su archie
+
+# get acme.sh
+curl https://get.acme.sh | sh
+
+# install oh-my-zsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s /usr/bin/zsh 
+
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+
+curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
