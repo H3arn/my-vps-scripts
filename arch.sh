@@ -35,6 +35,8 @@ makepkg -si
 
 # 
 sudo su
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
 cat << EOT >> /etc/pacman.conf
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/\$arch
