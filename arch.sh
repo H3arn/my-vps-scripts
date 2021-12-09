@@ -1,6 +1,9 @@
 #!/bin/bash
 
-pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron crontab nmap
+pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron crontab nmap ufw
+
+ufw allow 443
+ufw allow 8443
 
 # get trojan-go
 wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
