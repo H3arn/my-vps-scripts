@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron crontab nmap ufw
+pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron crontab nmap ufw docker
 
 ufw allow 443
 ufw allow 8443
