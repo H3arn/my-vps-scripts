@@ -68,3 +68,9 @@ git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
 
 curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
 
+# install webhook bot
+wget https://github.com/KunoiSayami/github-webhook-notification.rs/releases/latest/download/github-webhook-notification_linux_amd64
+chmod +x github-webhook-notification_linux_amd64
+sudo cp github-webhook-notification_linux_amd64 /usr/local/bin/
+sudo curl -L https://raw.githubusercontent.com/H3arn/github-webhook-notification.rs/master/gh-wbhk-tg.service -o /etc/systemd/system/gh-wbhk-tg.service
+sudo touch /usr/local/etc/gh-wbhk-tg/config.toml
