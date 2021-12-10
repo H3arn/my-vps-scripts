@@ -5,16 +5,19 @@ pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip g
 ufw allow 443
 ufw allow 8443
 
+vim /etc/ssh/sshd_config
+
 # get trojan-go
 wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
 unzip -o trojan-go-linux-amd64.zip -d /usr/local/bin/trojan-go
 mkdir -p /usr/local/etc/trojan-go
-curl -L https://raw.githubusercontent.com/H3arn/cmy-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
+curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
 
 # add locale and pacman color
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 vim /etc/pacman.conf
+#echo "Color" >>  /etc/pacman.conf
 
 # add archcn repo
 cat << EOT >> /etc/pacman.conf
