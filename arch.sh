@@ -74,3 +74,4 @@ chmod +x github-webhook-notification_linux_amd64
 sudo cp github-webhook-notification_linux_amd64 /usr/local/bin/
 sudo curl -L https://raw.githubusercontent.com/H3arn/github-webhook-notification.rs/master/gh-wbhk-tg.service -o /etc/systemd/system/gh-wbhk-tg.service
 sudo touch /usr/local/etc/gh-wbhk-tg/config.toml
+
