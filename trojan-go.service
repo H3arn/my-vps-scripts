@@ -5,6 +5,7 @@ After=network.target nginx.service
 
 [Service]
 Type=simple
+Restart=always
 ExecStart=/usr/local/bin/trojan-go/trojan-go -config /usr/local/etc/trojan-go/config.json
 
 [Install]
