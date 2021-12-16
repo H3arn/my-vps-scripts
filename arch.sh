@@ -1,11 +1,14 @@
 #!/bin/bash
 
-pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron crontab nmap ufw docker docker-compose
+pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose
 
 ufw allow 443
 ufw allow 8443
 
 vim /etc/ssh/sshd_config
+mkdir .ssh
+vim .ssh/authorized_keys
+systemctl restart sshd
 
 # get trojan-go
 wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
@@ -24,6 +27,8 @@ cat << EOT >> /etc/pacman.conf
 [archlinuxcn]
 Server = https://repo.archlinuxcn.org/\$arch
 EOT
+
+pacman -Syy
 
 #echo "Color" >> /etc/pacman.conf  
 
@@ -50,8 +55,12 @@ useradd -m -G "wheel" "archie"
 visudo
 sudo su archie
 
+cd
+mkdir .ssh
+sudo cp /root/.ssh/authorized_keys ~/.ssh/authorized_keys
+
 # install paru
-pacman -S --needed base-devel
+sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
 cd paru
 makepkg -si
