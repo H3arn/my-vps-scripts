@@ -62,15 +62,15 @@ sudo cp /root/.ssh/authorized_keys ~/.ssh/authorized_keys
 # install paru
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru-bin.git
-cd paru
+cd paru-bin
 makepkg -si
-
-# get acme.sh
-curl https://get.acme.sh | sh
 
 # install oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s /usr/bin/zsh 
+
+# get acme.sh
+curl https://get.acme.sh | sh
 
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
   ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
