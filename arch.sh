@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose
+pacman -S tree sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose
 
 ufw allow 443
 ufw allow 8443
@@ -17,7 +17,7 @@ mkdir -p /usr/local/etc/trojan-go
 curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
 
 # add locale and pacman color
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+#echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 vim /etc/pacman.conf
 #echo "Color" >>  /etc/pacman.conf
@@ -31,6 +31,8 @@ EOT
 pacman -Syy
 
 #echo "Color" >> /etc/pacman.conf  
+
+ls -al /etc/sysctl.d/
 
 # network optimization
 touch /etc/sysctl.d/99-sysctl.conf
@@ -50,8 +52,12 @@ net.core.default_qdisc = cake
 net.ipv4.tcp_syncookies = 1 
 EOT
 
+reboot
+
+sysctl --system
+
 # set up new user archie
-useradd -m -G "wheel" "archie"
+useradd -m -G "wheel" archie
 visudo
 sudo su archie
 
