@@ -4,7 +4,7 @@ apt install sudo
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install tmux mtr npm dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 ufw -y
+sudo apt install tmux mtr npm dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 ufw tree apache2-utils sqlite3 speedtest-cli -y
 
 ufw allow 443
 ufw allow 2083
@@ -28,7 +28,7 @@ curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/trojan-go.
 curl https://get.acme.sh | sh
 
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s /usr/bin/zsh 
+#chsh -s /usr/bin/zsh
 
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+git clone https://github.com/z-shell/F-Sy-H.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
