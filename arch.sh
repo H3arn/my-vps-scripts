@@ -1,9 +1,9 @@
 #!/bin/bash
 
-pacman -S tree sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose
+pacman -S tree sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose neofetch
 
-ufw allow 443
-ufw allow 8443
+# ufw allow 443
+# ufw allow 8443
 
 vim /etc/ssh/sshd_config
 mkdir .ssh
@@ -80,6 +80,8 @@ curl https://get.acme.sh | sh
 
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
   ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+
+curl -sS https://starship.rs/install.sh | sh
 
 curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
 
