@@ -4,9 +4,12 @@ apt install sudo
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install tmux mtr npm dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 ufw tree apache2-utils sqlite3 speedtest-cli neofetch -y
+sudo apt install tmux mtr dnsutils htop rsync zsh git vim curl wget unzip gnupg socat iperf3 ufw tree apache2-utils sqlite3 speedtest-cli neofetch -y
 
 vim /etc/ssh/sshd_config
+
+mkdir .ssh
+echo "" >> .ssh/authorized_keys
 
 service sshd restart
 
@@ -60,3 +63,5 @@ net.ipv4.tcp_congestion_control = bbr
 net.core.default_qdisc = cake
 net.ipv4.tcp_syncookies = 1 
 EOT
+
+sysctl --system

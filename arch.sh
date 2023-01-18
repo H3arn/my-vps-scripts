@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S tree sudo wget vim vi nano git zsh tmux mtr npm dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose neofetch
+pacman -S tree sudo wget vim vi nano git zsh tmux mtr dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose neofetch
 
 # ufw allow 443
 # ufw allow 8443
