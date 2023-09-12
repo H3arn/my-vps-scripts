@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S tree sudo wget vim vi nano git zsh tmux mtr dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose neofetch
+pacman -S tree sudo wget vim nano git zsh tmux mtr dnsutils htop rsync unzip gnupg socat iperf3 nginx wipe cron nmap ufw docker docker-compose neofetch
 
 # ufw allow 443
 # ufw allow 8443
@@ -11,10 +11,10 @@ vim .ssh/authorized_keys
 systemctl restart sshd
 
 # get trojan-go
-wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
-unzip -o trojan-go-linux-amd64.zip -d /usr/local/bin/trojan-go
-mkdir -p /usr/local/etc/trojan-go
-curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service 
+# wget https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/trojan-go-linux-amd64.zip
+# unzip -o trojan-go-linux-amd64.zip -d /usr/local/bin/trojan-go
+# mkdir -p /usr/local/etc/trojan-go
+# curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/trojan-go.service -o /etc/systemd/system/trojan-go.service
 
 # add locale and pacman color
 #echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
@@ -52,15 +52,17 @@ net.core.default_qdisc = cake
 net.ipv4.tcp_syncookies = 1 
 EOT
 
-reboot
+# reboot
 
 sysctl --system
+
+# enable NTP sync
+systemctl enable --now systemd-timesyncd
 
 # set up new user archie
 useradd -m -G "wheel" archie
 visudo
 sudo su archie
-
 cd
 mkdir .ssh
 sudo cp /root/.ssh/authorized_keys ~/.ssh/authorized_keys
@@ -75,20 +77,22 @@ makepkg -si
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s /usr/bin/zsh 
 
+# F-Sy-H
+git clone https://github.com/z-shell/F-Sy-H.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
+
 # get acme.sh
 curl https://get.acme.sh | sh
 
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
-
+# starship prompt
 curl -sS https://starship.rs/install.sh | sh
 
-curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
+# curl -L https://raw.githubusercontent.com/H3arn/my-vps-scripts/master/.zshrc -o /home/archie/.zshrc
 
 # install webhook bot
-wget https://github.com/KunoiSayami/github-webhook-notification.rs/releases/latest/download/github-webhook-notification_linux_amd64
-chmod +x github-webhook-notification_linux_amd64
-sudo cp github-webhook-notification_linux_amd64 /usr/local/bin/
-sudo curl -L https://raw.githubusercontent.com/H3arn/github-webhook-notification.rs/master/gh-wbhk-tg.service -o /etc/systemd/system/gh-wbhk-tg.service
-sudo touch /usr/local/etc/gh-wbhk-tg/config.toml
+# wget https://github.com/KunoiSayami/github-webhook-notification.rs/releases/latest/download/github-webhook-notification_linux_amd64
+# chmod +x github-webhook-notification_linux_amd64
+# sudo cp github-webhook-notification_linux_amd64 /usr/local/bin/
+# sudo curl -L https://raw.githubusercontent.com/H3arn/github-webhook-notification.rs/master/gh-wbhk-tg.service -o /etc/systemd/system/gh-wbhk-tg.service
+# sudo touch /usr/local/etc/gh-wbhk-tg/config.toml
 
