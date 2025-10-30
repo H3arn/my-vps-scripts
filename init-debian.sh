@@ -1,24 +1,32 @@
 #!/bin/bash
 
+cat <<EOF >> /etc/sysctl.d/70-disable-ipv6.conf 
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+EOF
+
+sysctl --system
+
+#USER_HOME="$(getent passwd $USER 2>/dev/null | cut -d: -f6)"
+#echo $USER_HOME > /USER_HOME.log
+#pwd > /pwd.log
 apt install sudo
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install tmux mtr iotop iftop dnsutils htop rsync zsh git vim curl wget unzip ufw tree -y
+sudo apt install tmux mtr-tiny iotop iftop dnsutils htop rsync zsh git vim curl wget unzip ufw tree ca-certificates -y
 
-sudo apt-get update
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release 
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Add the repository to Apt sources:
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
 apt autoremove -y
 apt clean
@@ -34,11 +42,13 @@ rm install.sh
 git clone https://github.com/z-shell/F-Sy-H.git \
   ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
 
-rm ~/.zshrc
-
+# rm ~/.zshrc
 cat <<EOF > ~/.zshrc
 export ZSH="\$HOME/.oh-my-zsh"
 ZSH_THEME="random"
 plugins=(git F-Sy-H)
 source \$ZSH/oh-my-zsh.sh
 EOF
+
+rm /etc/sysctl.d/70-disable-ipv6.conf 
+sysctl --system
