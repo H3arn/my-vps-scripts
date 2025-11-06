@@ -1,12 +1,12 @@
 #!/bin/bash
 
-cat <<EOF >> /etc/sysctl.d/70-disable-ipv6.conf 
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-EOF
+# cat <<EOF >> /etc/sysctl.d/70-disable-ipv6.conf 
+# net.ipv6.conf.all.disable_ipv6 = 1
+# net.ipv6.conf.default.disable_ipv6 = 1
+# net.ipv6.conf.lo.disable_ipv6 = 1
+# EOF
 
-sysctl --system
+# sysctl --system
 
 #USER_HOME="$(getent passwd $USER 2>/dev/null | cut -d: -f6)"
 #echo $USER_HOME > /USER_HOME.log
@@ -50,5 +50,5 @@ plugins=(git F-Sy-H)
 source \$ZSH/oh-my-zsh.sh
 EOF
 
-rm /etc/sysctl.d/70-disable-ipv6.conf 
-sysctl --system
+# rm /etc/sysctl.d/70-disable-ipv6.conf 
+# sysctl --system
