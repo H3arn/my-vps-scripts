@@ -39,14 +39,14 @@ curl https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -
 
 rm install.sh
 
-git clone https://github.com/z-shell/F-Sy-H.git \
-  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/F-Sy-H
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 
 # rm ~/.zshrc
 cat <<EOF > ~/.zshrc
 export ZSH="\$HOME/.oh-my-zsh"
 ZSH_THEME="random"
-plugins=(git F-Sy-H)
+plugins=(git fast-syntax-highlighting)
 source \$ZSH/oh-my-zsh.sh
 EOF
 
