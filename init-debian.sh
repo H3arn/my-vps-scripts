@@ -15,18 +15,7 @@ apt install sudo
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install tmux mtr-tiny iotop iftop dnsutils htop rsync zsh git vim curl wget unzip ufw tree ca-certificates -y
-
-sudo mkdir -p /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-# Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo apt install tmux mtr-tiny iotop iftop dnsutils htop btop rsync zsh git vim curl wget unzip ufw tree ca-certificates -y
 
 apt autoremove -y
 apt clean
